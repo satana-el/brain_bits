@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Brain Bits</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app" role="application" aria-label="Open Trivia Quiz">
+    <header>
+      <div class="title">Brain Bits</div>
+      <div class="sub">Answer multiple‑choice questions pulled live from <strong>opentdb.com</strong>.</div>
+    </header>
+
+    <div class="content">
+      <!-- Setup -->
+      <section id="setup" class="card">
+        <div class="controls">
+          <div class="field">
+            <label for="category">Category</label>
+            <select id="category" aria-label="Category">
+              <option value="">Any Category</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="difficulty">Difficulty</label>
+            <select id="difficulty" aria-label="Difficulty">
+              <option value="">Any</option>
+              <option value="easy">Easy</option>
+              <option value="medium">Medium</option>
+              <option value="hard">Hard</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="amount">Questions</label>
+            <input id="amount" type="number" min="3" max="50" value="10" aria-label="Number of questions" />
+          </div>
+          <button id="startBtn" aria-label="Start quiz">Start Quiz ▶</button>
+        </div>
+        <div id="setupStatus" class="muted" style="margin-top:10px"></div>
+      </section>
+
+      <!-- Quiz Panel -->
+      <section id="quiz" class="card hidden" aria-live="polite">
+        <div class="meta" style="margin-bottom:10px">
+          <div id="progressText">Question 1</div>
+          <div class="inline">
+            <span id="categoryTag" class="tag"></span>
+            <span id="difficultyTag" class="tag"></span>
+          </div>
+        </div>
+        <div class="progress" aria-label="Progress">
+          <div id="progressBar" class="bar" style="width:0%"></div>
+        </div>
+
+        <div style="display:grid; gap:12px; margin-top:14px">
+          <div id="question" class="question">Loading…</div>
+          <div id="answers" class="answers"></div>
+        </div>
+
+        <div class="footer" style="margin-top:14px">
+          <button id="restartBtn" class="ghost">⟲ Restart</button>
+          <div class="inline">
+            <div id="smallScore" class="muted">Score: 0</div>
+            <button id="nextBtn" disabled>Next ➜</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Results -->
+      <section id="results" class="card hidden center">
+        <div class="result" style="text-align:center">
+          <h2>Quiz Complete 🎉</h2>
+          <div id="finalScore" class="score">0 / 0</div>
+          <div id="finalPercent" class="muted" style="margin:6px 0 14px 0">0%</div>
+          <div class="inline center" style="justify-content:center; gap:8px">
+            <button id="playAgain">Play Again</button>
+            <button id="changeSettings" class="ghost">Change Settings</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Loading / Error -->
+      <section id="loading" class="card hidden">
+        <div class="loading"><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          <span>Fetching questions…</span>
+        </div>
+      </section>
+      <section id="error" class="card hidden">
+        <div id="errorMsg">Something went wrong.</div>
+      </section>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
